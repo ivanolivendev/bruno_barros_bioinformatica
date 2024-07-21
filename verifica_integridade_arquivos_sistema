@@ -1,0 +1,34 @@
+import os
+
+# Lista de arquivos que devem ser verificados
+files_to_check = [
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/silva-bac-16s-id90.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/silva-euk-28s-id98.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/rfam-5.8s-database-id98.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/silva-arc-16s-id95.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/silva-bac-23s-id98.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/rfam-5s-database-id98.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/silva-arc-23s-id98.fasta",
+    "/home/codesfrom_ivan/analises_bruno/soterna_database/sortmerna/data/rRNA_databases/silva-euk-18s-id95.fasta",
+    "/home/codesfrom_ivan/analises_bruno/bruno_barros_bioinformatica/amostra/contig.fa"
+]
+
+# Função para verificar a existência dos arquivos
+def check_files(file_list):
+    missing_files = []
+    for file_path in file_list:
+        if not os.path.isfile(file_path):
+            missing_files.append(file_path)
+    
+    return missing_files
+
+# Verificar arquivos e gerar relatório
+missing_files = check_files(files_to_check)
+
+if missing_files:
+    print("Relatório de Erro: Alguns arquivos estão faltando:")
+    for file in missing_files:
+        print(f"- {file}")
+else:
+    print("Todos os arquivos estão presentes.")
+
